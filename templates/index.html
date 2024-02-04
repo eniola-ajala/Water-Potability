@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Potability</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(to right, #007bff, #0056b3);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .description {
+            margin: 20px;
+            text-align: left;
+            color: #555;
+        }
+
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px; 
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        
+        input, select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box; }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h3 {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .pp {
+            color: #ff0022;
+        }
+
+
+        .input-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-tooltip {
+            font-size: 0.8em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .input-range {
+            font-size: 0.8em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Water Potability Prediction</h1>
+    </header>
+
+    <div class="description">
+        <p>Water is the most significant resource of life, crucial for supporting the life of most existing creatures and human beings. Living organisms need water with enough quality to continue their lives. There are certain limits of pollutions that water species can tolerate. Exceeding these limits affects the existence of these creatures and threatens their lives.
+
+ <br>
+
+            As per the United Nations (UN) report, about 1.5 million people die each year because of contaminated water-driven diseases. In developing countries, it is announced that 80% of health problems are caused by contaminated water. Five million deaths and 2.5 billion illnesses are reported annually. Such a mortality rate is higher than deaths resulting from accidents, crimes, and terrorist attacks.
+            <br>
+             
+            
+            Access to safe drinking-water is essential to health, a basic human right and a component of effective policy for health protection. This is important as a health and development issue at a national, regional and local level. In some regions, it has been shown that investments in water supply and sanitation can yield a net economic benefit, since the reductions in adverse health effects and health care costs outweigh the costs of undertaking the interventions.</p>
+            <br>
+            
+            
+            <p class="pp"> NOTE: This model is only 70% accurate!</p>
+
+    <p> Use the form below to predict water potability</p>
+
+            
+    </div>
+    
+
+    <form action="{{ url_for('predict') }}" method="POST">
+
+        <label for="ph"> pH</label>
+    <input type="number" name="PH" placeholder=" pH value" required>
+
+
+        <label for="Hardness"> Hardness (mg/L) </label>
+        <input type="number" name = "bedroom" placeholder="Enter value" required>
+        
+        <label for="Solids"> Concentration of Solids</label>
+        <input type="number" name = "Solids" placeholder="Enter concentration value" required> 
+        
+        <label for="Chloramines"> Chloramines</label>
+        <input type="number" name = "Chloramines" placeholder="Enter value" required> 
+
+        <label for="Sulfate"> Sulfate</label>
+        <input type="number" name = "Sulfate" placeholder="Enter value" required> 
+        
+        <label for="Conductivity"> Conductivity</label>
+        <input type="number" name = "Conductivity" placeholder="Enter value" required>
+        
+        <label for="Organic_carbon"> Organi Carbon</label>
+        <input type="number" name = "Organic_carbon" placeholder="Enter value" required>
+        
+        <label for="Trihalomethanes"> Trihalomethanes</label>
+        <input type="number" name = "Trihalomethanes" placeholder="Enter value" required>
+        
+
+        <label for="Turbidity"> Turbidity</label>
+        <input type="number" name = "Turbidity" placeholder="Enter value" required>
+        
+
+        <button type="submit"> Submit </button>
+    </form>
+    <h3> <br> {{prediction_text}}</h3>
+    
+
+    </body> 
+</html>
